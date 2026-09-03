@@ -86,5 +86,5 @@ app.delete('/albums/:id', (req, res) => {
 })
 //start the server
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`server running on http://localhost:${PORT}`);
+    console.log(`server running `);
 })
