@@ -16,6 +16,9 @@ sqlite3.OPEN_READWRITE, (err) => {
     if (err) console.error(err.message);
     console.log('Conneted to the music.db database');
 });
+app.get('/', (req, res) => {
+    res.send('Welcome to the Music API');
+}  ); 
 
 // Get all albums
 app.get('/albums', (req, res) => {
