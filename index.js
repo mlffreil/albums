@@ -4,21 +4,17 @@ const sqlite3 = require('sqlite3').verbose();
 
 // Initialize the express app
 const app = express();
-app.use(cors());
-const PORT = process.env.PORT || 3000;
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-});
+app.use(cors({
+  origin: 'myalbums.maryloufreil.com', // Specify your React app's URL exactly (no trailing slash)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 // Enable express to parse JSON bodies
 app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
 //open database
 const musicDb = new sqlite3.Database('./music.db',
 sqlite3.OPEN_READWRITE, (err) => {
