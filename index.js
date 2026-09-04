@@ -25,12 +25,12 @@ sqlite3.OPEN_READWRITE, (err) => {
     if (err) console.error(err.message);
     console.log('Conneted to the music.db database');
 });
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
     res.send('Welcome to the Music API');
 }  ); 
 
 // Get all albums
-app.get('/albums', (req, res) => {
+app.get('/albums', cors(), (req, res) => {
     musicDb.all("SELECT * FROM albums", [], (err, rows) => {
         if (err) {
             res.status(500).send(`Failed to retieve albums: ${err.message}`);
@@ -41,7 +41,7 @@ app.get('/albums', (req, res) => {
     })
 })
 
-app.get('/albums/:id', (req, res) => {
+app.get('/albums/:id', cors(), (req, res) => {
     const { id } = req.params;
     musicDb.get("SELECT * FROM albums WHERE id = ?", [id], (err, row) => {
         if (err) {
