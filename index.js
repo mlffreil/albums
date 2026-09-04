@@ -26,17 +26,23 @@ sqlite3.OPEN_READWRITE, (err) => {
     console.log('Conneted to the music.db database');
 });
 app.get('/', cors(), (req, res) => {
+    console.log('Received request for /');
     res.send('Welcome to the Music API');
 }  ); 
 
 // Get all albums
 app.get('/albums', cors(), (req, res) => {
+    console.log('Fetching all albums');
     musicDb.all("SELECT * FROM albums", [], (err, rows) => {
         if (err) {
+            console.log('Error retrieving albums:', err.message);
             res.status(500).send(`Failed to retieve albums: ${err.message}`);
         }
         else {
+            console.log('Albums retrieved successfully');
+            console.log(rows);
             res.json(rows);
+            
         }
     })
 })
