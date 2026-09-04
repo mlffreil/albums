@@ -7,7 +7,7 @@ const app = express();
 //app.use(cors({origin: 'http://localhost:5173'}));
 const PORT = process.env.PORT || 3000;
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
