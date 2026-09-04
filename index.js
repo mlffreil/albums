@@ -42,6 +42,7 @@ app.get('/albums', cors(), (req, res) => {
             console.log('Albums retrieved successfully');
             console.log(rows);
             res.json(rows);
+            console.log(res);
             
         }
     })
