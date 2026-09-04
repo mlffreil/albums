@@ -6,7 +6,7 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3000;
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
         "Access-Control-Allow-Headers",
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
     );
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
-});*/
+});
 
 // Enable express to parse JSON bodies
 app.use(express.json());
