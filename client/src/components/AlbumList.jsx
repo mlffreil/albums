@@ -11,7 +11,11 @@ function AlbumList() {
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const response = await axios.get(`${API_URL}/albums`);
+        const response = await axios.get(`${API_URL}/albums`, {
+            params: {
+                cb: new Date().getTime() // Cache-busting parameter
+            }   
+        });
         setAlbums(response.data);
         setLoading(false);
       } catch (error) {
