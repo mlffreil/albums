@@ -1,10 +1,6 @@
 <IfModule mod_headers.c>
-    # Match your exact React origin dynamically
-    SetEnvIf Origin "^https://myalbums\.maryloufreil\.com$" AccessControlAllowOrigin=$0
-    Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
-    
-    # Standard CORS allowances
-    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
-    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    Header set Access-Control-Allow-Credentials "true"
+    Header always set Access-Control-Allow-Origin "https://maryloufreil.com"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    Header always set Access-Control-Allow-Credentials "true"
 </IfModule>
