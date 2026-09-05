@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3').verbose();
 // Initialize the express app
 const app = express();
 app.use(cors({
-  origin: 'https:myalbums.maryloufreil.com', // Specify your React app's URL exactly (no trailing slash)
+  origin: 'https://myalbums.maryloufreil.com', // Specify your React app's URL exactly (no trailing slash)
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   cacheControl: ['no-cache', 'no-store', 'must-revalidate', 'proxy-revalidate' ],
