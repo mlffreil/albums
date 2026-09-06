@@ -11,8 +11,10 @@ function EditAlbum() {
   const [year, setYear] = useState('');
   
   useEffect(() => {
-    
-    axios.get(`${API_URL}/albums/${id}`)
+    const API = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL
+  });
+    API.get(`/albums/${id}`)
       .then((response) => {
         const album = response.data;
         setTitle(album.title);
@@ -26,8 +28,11 @@ function EditAlbum() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const API = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL
+  });
     const updatedAlbum = { title, artist, year };
-    axios.put(`${API_URL}/albums/${id}`, updatedAlbum)
+    API.put(`/albums/${id}`, updatedAlbum)
       .then((response) => {
         console.log('Album updated:', response.data);
         navigate('/');

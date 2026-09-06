@@ -13,6 +13,21 @@ app.use(cors({
     expires: ['0'],
 }));
 
+// Cloudflare / GoDaddy WAF custom bypass middleware
+app.use((req, res, next) => {
+  // Force the origin header to match the incoming requester explicitly
+  const origin = req.headers.origin;
+  if (origin === 'https://myalbums.maryloufreil.com') {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
+  // Instruct proxies and firewalls never to cache or scrub this handshake
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  next();
+});
+
 
 // Enable express to parse JSON bodies
 app.use(express.json());

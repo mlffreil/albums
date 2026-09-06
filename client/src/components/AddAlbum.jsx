@@ -8,14 +8,16 @@ function AddAlbum() {
   const [artist, setArtist] = useState('');
   const [year, setYear] = useState('');
   const navigate = useNavigate();
-
+const API = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL
+  });
     const handleSubmit = (e) => {
       e.preventDefault();
       // Handle form submission logic here
       const newAlbum = { title, artist, year };
       console.log('New Album:', newAlbum);
-      axios
-        .post(`${API_URL}/albums`, newAlbum)
+      API
+        .post(`/albums`, newAlbum)
         .then((response) => {
           console.log('Album added:', response.data);
           navigate('/');

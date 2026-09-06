@@ -8,10 +8,14 @@ function AlbumList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL
+  });
+
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const response = await axios.get(`${API_URL}/albums`, {
+        const response = await API.get(`/albums`, {
             params: {
                 cb: new Date().getTime() // Cache-busting parameter
             }   
@@ -28,7 +32,7 @@ function AlbumList() {
     fetchAlbums();
   }, []);
   const deleteAlbum = (id) => {
-    axios.delete(`${API_URL}/albums/${id}`)
+    API.delete(`/albums/${id}`)
       .then(() => {
         setAlbums(albums.filter(album => album.id !== id));
       })
