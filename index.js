@@ -17,7 +17,7 @@ app.use(cors({
 app.use((req, res, next) => {
   // Force the origin header to match the incoming requester explicitly
   const origin = req.headers.origin;
-  if (origin === 'https://myalbums.maryloufreil.com') {
+  if (origin === 'http://myalbums.maryloufreil.com' || origin === 'https://myalbums.maryloufreil.com') {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
   
