@@ -122,7 +122,7 @@ app.delete('/albums/:id', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 4. Fallback Catch-All: Reroute all remaining web navigation requests to React's index.html
-app.get('/*path', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 //start the server
