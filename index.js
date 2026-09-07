@@ -40,11 +40,11 @@ sqlite3.OPEN_READWRITE, (err) => {
     if (err) console.error(err.message);
     console.log('Conneted to the music.db database');
 });
-/*app.get('/', cors(), (req, res) => {
+app.get('/', cors(), (req, res) => {
     console.log('Received request for /');
     res.send('Welcome to the Music API');
 }  ); 
-*/
+
 // Get all albums
 app.get('/albums', cors(), (req, res) => {
     console.log('Fetching all albums');
