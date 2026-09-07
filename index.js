@@ -40,11 +40,11 @@ sqlite3.OPEN_READWRITE, (err) => {
     if (err) console.error(err.message);
     console.log('Conneted to the music.db database');
 });
-app.get('/', cors(), (req, res) => {
+/*app.get('/', cors(), (req, res) => {
     console.log('Received request for /');
     res.send('Welcome to the Music API');
 }  ); 
-
+*/
 // Get all albums
 app.get('/albums', cors(), (req, res) => {
     console.log('Fetching all albums');
@@ -122,7 +122,7 @@ app.delete('/albums/:id', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 4. Fallback Catch-All: Reroute all remaining web navigation requests to React's index.html
-app.get('/*', (req, res) => {
+app.get('/*splat', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 //start the server
